@@ -62,7 +62,7 @@
                 files.forEach(file => {
                     const li = document.createElement('li');
                     const link = document.createElement('a');
-                    link.href = `${folder}/${file.name}`;
+                    link.href = `${file.name}`;
                     link.textContent = file.name;
                     li.appendChild(link);
                     list.appendChild(li);
