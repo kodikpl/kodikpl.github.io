@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Embed Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff2d55;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        iframe {
+            margin-top: 20px;
+            width: 350px;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>TikTok Video Viewer</h1>
+    <input type="text" id="tiktokUrl" placeholder="https://www.tiktok.com/@example/video/7463529015274523926">
+    <button onclick="embedTikTok()">Next</button>
+    <div id="player"></div>
+
+    <script>
+        function embedTikTok() {
+            let url = document.getElementById('tiktokUrl').value;
+            let match = url.match(/video\/(\d+)/);
+            if (match) {
+                let videoId = match[1];
+                let embedUrl = `https://www.tiktok.com/player/v1/${videoId}?rel=0&fullscreen=1`;
+                document.getElementById('player').innerHTML = `<iframe src="${embedUrl}" allowfullscreen></iframe>`;
+            } else {
+                alert('Invalid TikTok URL. Please enter a valid link.');
+            }
+        }
+    </script>
+    <h3>This does not support vm.tiktok.com and vt.tiktok.com links.</h3>
+    <h3>Fix: Visit the site and copy the URL from the address bar.</h3>
+</body>
+</html>
